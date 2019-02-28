@@ -22,7 +22,9 @@ https://opensource.org/licenses/BSD-3-Clause
 
 For Ubuntu 16.04 and above
 
-\# apt install autoconf libtool libdrm-dev xorg xorg-dev openbox libx11-dev libgl1-mesa-glx libgl1-mesa-dev
+```sh
+sudo apt install autoconf libtool libdrm-dev xorg xorg-dev openbox libx11-dev libgl1-mesa-glx libgl1-mesa-dev
+```
 
 Equivalents for other distributions should work.
 
@@ -38,7 +40,7 @@ GmmLib - https://github.com/intel/gmmlib (please check https://github.com/intel/
 2. Build and install gmmlib master
 3. Get media repo and format the workspace folder as below (suggest the workspace to be a dedicated one for media driver build):
 
-```
+```txt
 <workspace>
     |- media-driver
 ```
