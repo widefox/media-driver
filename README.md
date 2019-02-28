@@ -38,7 +38,7 @@ GmmLib - https://github.com/intel/gmmlib (please check https://github.com/intel/
 2. Build and install gmmlib master
 3. Get media repo and format the workspace folder as below (suggest the workspace to be a dedicated one for media driver build):
 
-```sh
+```
 <workspace>
     |- media-driver
 ```
