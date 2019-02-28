@@ -1,6 +1,5 @@
 # Intel(R) Media Driver for VAAPI
 
-
 ## Introduction
 
 The Intel(R) Media Driver for VAAPI is a new VA-API (Video Acceleration API)
@@ -38,41 +37,53 @@ GmmLib - https://github.com/intel/gmmlib (please check https://github.com/intel/
 1. Build and install libva master
 2. Build and install gmmlib master
 3. Get media repo and format the workspace folder as below (suggest the workspace to be a dedicated one for media driver build):
-```
+
+```sh
 <workspace>
     |- media-driver
 ```
-4. 
+
+4.
+
+```sh
+mkdir <workspace>/build_media
 ```
-$ mkdir <workspace>/build_media
+
+5.
+
+```sh
+cd <workspace>/build_media
 ```
-5. 
+
+6.
+
+```sh
+cmake ../media-driver
 ```
-$ cd <workspace>/build_media
-```
-6. 
-```
-$ cmake ../media-driver
-```
-7. 
-```
-$ make -j8
+
+7.
+
+```sh
+make -j8
 ```
 
 ## Install
 
+```sh
+sudo make install
 ```
-$ sudo make install
-```
+
 This will install the following files (e.g. on Ubuntu):
-```
+
+```sh
 -- Installing: /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so
 -- Installing: /etc/profile.d/intel-media.sh
 -- Installing: /usr/lib/x86_64-linux-gnu/igfxcmrt64.so
 ```
 
 For iHD_drv_video.so please export related LIBVA environment variables.
-```
+
+```sh
 export LIBVA_DRIVERS_PATH=<path-contains-iHD_drv_video.so>
 export LIBVA_DRIVER_NAME=iHD
 ```
@@ -136,7 +147,6 @@ Es - HW + Shader Encoding
 
 \* ICL encoding is pending on i915 support on upstream, for more information, please check [Known Issues and Limitations #5](https://github.com/intel/media-driver/blob/master/README.md#known-issues-and-limitations).
 
-
 | Video Processing                             | BDW | SKL | BXT/APL | KBL | CFL | WHL | CNL | ICL |
 |----------------------------------------------|-----|-----|---------|-----|-----|-----|-----|-----|
 | Blending                                     |  Y  |  Y  |    Y    |  Y  |  Y  |  Y  |  Y  |  Y  |
@@ -175,7 +185,6 @@ D  - HW Decoding
 
 E  - HW Encoding, VDEnc CQP mode only, BRC mode is pending on i915 support on upstream.
 
-
 ## Open Source Shader Media Features
 
 | Media Features                               | BDW | SKL | BXT/APL | KBL | CFL | WHL | CNL | ICL |
@@ -191,7 +200,6 @@ E  - HW Encoding, VDEnc CQP mode only, BRC mode is pending on i915 support on up
 | Sharpening                                   |     |     |         |     |     |     |     |  Y  |
 | Color fill                                   |     |     |         |     |     |     |     |  Y  |
 | Chroma Siting                                |     |     |         |     |     |     |     |  Y  |
-
 
 ## Close Source Shader Media Codec Features
 
@@ -209,13 +217,9 @@ Es - HW + Shader Encoding
 
 \* ICL encoding is pending on i915 support on upstream, for more information, please check [Known Issues and Limitations #5](https://github.com/intel/media-driver/blob/master/README.md#known-issues-and-limitations).
 
-
-
-
 ## Known Issues and Limitations
 
-1. Intel(R) Media Driver for VAAPI is recommended to be built against gcc compiler v6.1
-or later, which officially supported C++11.
+1. Intel(R) Media Driver for VAAPI is recommended to be built against gcc compiler v6.1 or later, which officially supported C++11.
 
 2. SKL: Green or other incorrect color will be observed in output frames when using YV12/I420 as input format for csc/scaling/blending/rotation, etc. on Ubuntu 16.04 stock (with kernel 4.10). The issue can be addressed with the kernel patch: WaEnableYV12BugFixInHalfSliceChicken7 [commit 0b71cea29fc29bbd8e9dd9c641fee6bd75f6827](https://cgit.freedesktop.org/drm-tip/commit/?id=0b71cea29fc29bbd8e9dd9c641fee6bd75f68274)
 
@@ -229,5 +233,4 @@ or later, which officially supported C++11.
    * Low power encoding: known [issue#328](https://github.com/intel/media-driver/issues/328) needs kernel patch which is under review.
    * VME based encoding: known [issue#267](https://github.com/intel/media-driver/issues/267), which requires media driver patch [PR#271](https://github.com/intel/media-driver/pull/271) and kernel driver patch [Per context dynamic (sub)slice power-gating](https://patchwork.freedesktop.org/series/48194/).
 
-
-##### (*) Other names and brands may be claimed as property of others.
+### (*) Other names and brands may be claimed as property of others
